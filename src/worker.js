@@ -42,7 +42,7 @@ class Worker {
         // Take a picture
         this.camera.takePicture().then(() => {
           // Upload tweet!
-          return this.tweety.tweet('~/motion/lastsnap.jpg', `Basil updated from ${task.address}`);
+          return this.tweety.tweet('/home/pi/motion/lastsnap.jpg', `Basil updated from ${task.address}`);
         }).then(() => {
           console.log(`Worker: Finished task ${task.transactionHash}`)
         });
