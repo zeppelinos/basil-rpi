@@ -2,20 +2,18 @@
 require('dotenv').config()
 var Web3 = require('web3');
 var web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/'));
-var axios = require('axios');
-// var hue = require("node-hue-api"),
-//     HueApi = hue.HueApi,
-//     lightState = hue.lightState;
+
 var Twitter = require('./src/twitter');
-
 var Hue = require('./src/hue');
+var Camera = require('./src/camera');
 
+// Set hue
 var hue = new Hue();
 hue.set_color(0,244,0);
 
-
-// Camera snapshot
-axios.get('http://192.168.1.83:8080/0/action/snapshot');
+// Take snapshot
+var camera = new Camera();
+camera.take_picture();
 
 // Tweet
 var tweety = new Twitter();
