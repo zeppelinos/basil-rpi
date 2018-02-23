@@ -1,6 +1,6 @@
 var hue = require("node-hue-api"),
-    HueApi = hue.HueApi,
-    lightState = hue.lightState;
+  HueApi = hue.HueApi,
+  lightState = hue.lightState;
 
 
 class Hue {
@@ -12,20 +12,20 @@ class Hue {
   }
 
   displayBridges(bridge) {
-  	console.log("Hue Bridges Found: " + JSON.stringify(bridge));
+    console.log("Hue Bridges Found: " + JSON.stringify(bridge));
   };
 
   displayResult(result) {
-      console.log(JSON.stringify(result, null, 2));
+    console.log(JSON.stringify(result, null, 2));
   };
 
-  set_color(red, green, blue) {
+  setColor(red, green, blue) {
     var state = lightState.create().on().rgb(red, green, blue);
 
     this.api.setLightState(5, state) //5 is our particular LED ID in the hub
-        .then(this.displayResult)
-        .done();
+      .then(this.displayResult)
+      .done();
   }
 }
 
-module.exports=Hue;
+module.exports = Hue;
