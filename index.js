@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require('dotenv').config()
 var Web3 = require('web3');
 var web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/'));
 var axios = require('axios');

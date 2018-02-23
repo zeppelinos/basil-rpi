@@ -17,9 +17,11 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
+    "dotenv": "^5.0.0",
     "hueadm": "^1.0.4",
     "jshue": "^2.1.1",
     "node-hue-api": "^2.4.2",
-    "truffle-contract": "^3.0.3"
+    "truffle-contract": "^3.0.3",
+    "twitter": "^1.7.1"
   }
 }
