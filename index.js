@@ -9,7 +9,7 @@ var Camera = require('./src/camera');
 
 // Set hue
 var hue = new Hue();
-hue.set_color(0,244,0);
+hue.set_color(244,100,12);
 
 // Take snapshot
 var camera = new Camera();
