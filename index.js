@@ -3,35 +3,15 @@ require('dotenv').config()
 var Web3 = require('web3');
 var web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/'));
 var axios = require('axios');
-var hue = require("node-hue-api"),
-    HueApi = hue.HueApi,
-    lightState = hue.lightState;
+// var hue = require("node-hue-api"),
+//     HueApi = hue.HueApi,
+//     lightState = hue.lightState;
 var Twitter = require('./src/twitter');
-    //Twitter = twitter.Twitter;
 
-console.log(Twitter);
+var Hue = require('./src/hue');
 
-//Hue helpers
-var displayBridges = function(bridge) {
-	console.log("Hue Bridges Found: " + JSON.stringify(bridge));
-};
-
-var displayResult = function(result) {
-    console.log(JSON.stringify(result, null, 2));
-};
-
-//Hue setup
-var host = "192.168.1.145",
-    username = "1hTTXvqyaRjI-uqhiLaPFTOA3ETJOqsX0avADHgT",
-    api = new HueApi(host, username),
-    state
-
-//Hue play
-state = lightState.create().on().rgb(244,167,66);
-
-api.setLightState(5, state) //5 is our particular LED ID in the hub
-    .then(displayResult)
-    .done();
+var hue = new Hue();
+hue.set_color(0,244,0);
 
 
 // Camera snapshot
@@ -39,7 +19,7 @@ axios.get('http://192.168.1.83:8080/0/action/snapshot');
 
 // Tweet
 var tweety = new Twitter();
-tweety.tweet('./snaps/lastsnap.jpg', 'lookin\' good!');
+//tweety.tweet('./snaps/lastsnap.jpg', 'lookin\' good!');
 
 
 // //Web3 listen
