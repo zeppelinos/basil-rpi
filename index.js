@@ -1,31 +1,40 @@
 #!/usr/bin/env node
 require('dotenv').config()
+const process = require('process');
+
 const Twitter = require('./src/twitter');
 const Hue = require('./src/hue');
 const Camera = require('./src/camera');
 const Basil = require('./src/contract');
+const Worker = require('./src/worker');
 
-// Set hue
-var hue = new Hue();
-hue.set_color(244,100,12);
+const INTERVAL = 10000;
 
-// Take snapshot
+const queue = [];
+
+const hue = new Hue();
 const camera = new Camera();
-// camera.take_picture();
-
-// Tweet
 const tweety = new Twitter();
-//tweety.tweet('./snaps/lastsnap.jpg', 'lookin\' good!');
 
-// Contract
+// Listen for donation events
 const basil = new Basil();
 basil.watchDonations((error, result) => {
-  queue.push(result);
+  if (error) {
+    console.error("Error watching events", error);
+    // TODO: Do something here!
+  } else {
+    console.log(`Adding transaction ${result.transactionHash} to queue`);
+    queue.push(result);
+  }
 });
 
-// Working queue and worker
-const queue = [];
+// Get the worker to work!
 const worker = new Worker(queue, hue, camera, tweety, basil);
+const interval = setInterval(() => worker.work(), INTERVAL);
 
-// Worker
-setInterval(worker.work, 5000);
+// Do any cleanup needed
+process.on('SIGTERM', function () {
+  console.log("Terminating on user signal");
+  clearInterval(interval);
+  process.exit(0);
+});

@@ -22,9 +22,8 @@ class Hue {
   setColor(red, green, blue) {
     var state = lightState.create().on().rgb(red, green, blue);
 
-    this.api.setLightState(5, state) //5 is our particular LED ID in the hub
-      .then(this.displayResult)
-      .done();
+    return this.api.setLightState(5, state) //5 is our particular LED ID in the hub
+                  .then(this.displayResult);
   }
 }
 

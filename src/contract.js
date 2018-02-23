@@ -10,14 +10,10 @@ const BasilAbi = require('../abi/Basil.json');
 const BasilContract = TruffleContract(BasilAbi);
 BasilContract.setProvider(provider);
 
-// const watch = function(cb) {
-//   newDonationEvent.watch(cb);
-// }
-
-class BasilContract {
+class Basil {
   constructor() {
     this.contract = BasilContract.at(basilAddress);
-    this.newDonationEvent = basil.NewDonation({}, { fromBlock: 0, toBlock: 'latest' });
+    this.newDonationEvent = this.contract.NewDonation({}, { fromBlock: 0, toBlock: 'latest' });
   }
 
   watchDonations(cb) {
