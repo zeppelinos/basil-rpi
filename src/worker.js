@@ -42,11 +42,13 @@ class Worker {
         // Take a picture
         this.camera.takePicture().then(() => {
           // Upload tweet!
-          return this.tweety.tweet('/home/pi/motion/lastsnap.jpg', `Basil updated from ${task.address}`);
+          setTimeout(() => {
+            return this.tweety.tweet('/home/pi/motion/lastsnap.jpg', `Basil updated from ${task.from}`);
+          }, 5000)
         }).then(() => {
           console.log(`Worker: Finished task ${task.transactionHash}`)
         });
-      }, 5000) 
+      }, 5000)
     })
     .fail((err) => {
       console.error(`Worker: error running task ${task.transactionHash}`, err)
