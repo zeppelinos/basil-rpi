@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "facu [12:23 PM]"
+    "url": "https://github.com/ZeppelinSolutions/basil-rpi.git"
   },
   "keywords": [
-    "https://github.com/ZeppelinSolutions/basil-rpi.git"
+    "basil"
   ],
   "author": "fiiiu",
   "license": "MIT",
