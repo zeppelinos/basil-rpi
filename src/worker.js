@@ -30,7 +30,7 @@ class Worker {
 
   // Run a task associated to a single transaction
   runTask(task) {
-    const { r, g, b } = task.args;
+    const { donor, r, g, b } = task.args;
     
     // Apologies for the callback hell here, but hue works with Q promises, 
     // instead of real promises, so we can't combine them
@@ -43,7 +43,7 @@ class Worker {
         this.camera.takePicture().then(() => {
           // Upload tweet!
           setTimeout(() => {
-            return this.tweety.tweet('/home/pi/motion/lastsnap.jpg', `Basil updated from ${task.from}`);
+            return this.tweety.tweet('/home/pi/motion/lastsnap.jpg', `Basil updated from ${donor}`);
           }, 5000)
         }).then(() => {
           console.log(`Worker: Finished task ${task.transactionHash}`)
