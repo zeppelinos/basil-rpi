@@ -5,7 +5,7 @@ class Camera {
   }
 
   takePicture() {
-    return axios.get('http://192.168.1.83:8080/0/action/snapshot');
+    return axios.get('http://localhost:8080/0/action/snapshot');
   }
 
 }

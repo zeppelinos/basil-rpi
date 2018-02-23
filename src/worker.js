@@ -36,14 +36,14 @@ class Worker {
     // instead of real promises, so we can't combine them
     
     // Change light color
-    this.hue.setColor(r.toNumber(), g.toNumber(), b.toNumber()).then(function() {
+    this.hue.setColor(r.toNumber(), g.toNumber(), b.toNumber()).then(() => {
       // Wait 5s for the light to actually change
-      setTimeout(function() {
+      setTimeout(() => {
         // Take a picture
-        this.camera.takePicture().then(function() {
+        this.camera.takePicture().then(() => {
           // Upload tweet!
-          return this.tweety.tweet('./snaps/lastsnap.jpg', `Basil updated from ${task.address}`);
-        }).then(function() {
+          return this.tweety.tweet('~/motion/lastsnap.jpg', `Basil updated from ${task.address}`);
+        }).then(() => {
           console.log(`Worker: Finished task ${task.transactionHash}`)
         });
       }, 5000) 
