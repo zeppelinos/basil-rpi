@@ -6,7 +6,10 @@ var axios = require('axios');
 var hue = require("node-hue-api"),
     HueApi = hue.HueApi,
     lightState = hue.lightState;
+var Twitter = require('./src/twitter');
+    //Twitter = twitter.Twitter;
 
+console.log(Twitter);
 
 //Hue helpers
 var displayBridges = function(bridge) {
@@ -31,10 +34,13 @@ api.setLightState(5, state) //5 is our particular LED ID in the hub
     .done();
 
 
-
-
-// //Camera snapshot
+// Camera snapshot
 axios.get('http://192.168.1.83:8080/0/action/snapshot');
+
+// Tweet
+var tweety = new Twitter();
+tweety.tweet('./snaps/lastsnap.jpg', 'lookin\' good!');
+
 
 // //Web3 listen
 // var contract = web3.eth.contract(abi).at("0xe45866ac5d51067ce292bc656c790e94ddcf0766");

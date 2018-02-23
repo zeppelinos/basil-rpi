@@ -14,13 +14,14 @@ class Twitter {
   tweet(imagePath, message) {
     console.log('Uploading image ', imagePath);
     const image = fs.readFileSync(imagePath);
+    var self = this;
     this.client.post('media/upload', { media: image }, function(error, media, response) {
       if(error) return console.error('Error while uploading image: ', imagePath, error)
       else {
         console.log('Image uploaded: ', imagePath);
         const status = { status: message, media_ids: media.media_id_string }
         console.log('Twitting...');
-        this.client.post('statuses/update', status, function(error, tweet, response) {
+        self.client.post('statuses/update', status, function(error, tweet, response) {
           if(error) return console.error('Error while uploading image: ', imagePath, error)
           else console.log('Message tweeted: ', tweet);
         });
