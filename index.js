@@ -23,11 +23,13 @@ var host = "192.168.1.145",
     state
 
 //Hue play
-state = lightState.create().on().rgb(0,255,0);
+state = lightState.create().on().rgb(244,167,66);
 
-api.setLightState(5, state)
+api.setLightState(5, state) //5 is our particular LED ID in the hub
     .then(displayResult)
     .done();
+
+
 
 
 // //Camera snapshot
