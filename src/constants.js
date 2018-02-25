@@ -1,0 +1,21 @@
+module.exports = {
+  // CAMERA
+  CAMERA_ID: '0',
+  CAMERA_IP: 'http://localhost:8080',
+  CAMERA_PICTURE_PATH: '/home/pi/motion/lastsnap.jpg',
+
+  // HUE
+  HUE_HOST: '192.168.1.145',
+  HUE_LED_ID: 5,
+  HUE_USERNAME: '1hTTXvqyaRjI-uqhiLaPFTOA3ETJOqsX0avADHgT',
+
+  // ETHEREUM
+  PROVIDER_URL: 'http://ropsten.smartcontracts.xyz:8565/',
+  BASIL_ADDRESS: '0x4103dee0e21ad2d2181a887034fe52fe446f7f25',
+
+  // TWITTER
+  TWITTER_CONSUMER_KEY: process.env.TWITTER_CONSUMER_KEY,
+  TWITTER_CONSUMER_SECRET: process.env.TWITTER_CONSUMER_SECRET,
+  TWITTER_ACCESS_TOKEN_KEY: process.env.TWITTER_ACCESS_TOKEN_KEY,
+  TWITTER_ACCESS_TOKEN_SECRET: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+};

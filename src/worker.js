@@ -1,3 +1,5 @@
+const { CAMERA_PICTURE_PATH } = require('./constants')
+
 class Worker {
 
   // TODO: Store last block processed and restore it when working
@@ -43,7 +45,7 @@ class Worker {
         this.camera.takePicture().then(() => {
           // Upload tweet!
           setTimeout(() => {
-            return this.tweety.tweet('/home/pi/motion/lastsnap.jpg', `Basil updated from ${donor}`);
+            return this.tweety.tweet(CAMERA_PICTURE_PATH, `Basil updated from ${donor}`);
           }, 5000)
         }).then(() => {
           console.log(`Worker: Finished task ${task.transactionHash}`)
