@@ -5,13 +5,13 @@ module.exports = {
   CAMERA_PICTURE_PATH: '/home/pi/motion/lastsnap.jpg',
 
   // HUE
-  HUE_HOST: '192.168.1.145',
-  HUE_LED_ID: 5,
-  HUE_USERNAME: '1hTTXvqyaRjI-uqhiLaPFTOA3ETJOqsX0avADHgT',
+  HUE_HOST: process.env.HUE_HOST,
+  HUE_LED_ID: process.env.HUE_LED_ID,
+  HUE_USERNAME: process.env.HUE_USERNAME,
 
   // ETHEREUM
-  PROVIDER_URL: 'http://ropsten.smartcontracts.xyz:8565/',
-  BASIL_ADDRESS: '0x4103dee0e21ad2d2181a887034fe52fe446f7f25',
+  PROVIDER_URL: 'http://localhost:8565',
+  BASIL_ADDRESS: '0xab21e5e72c2fdb13c1f8c9b660f5035eaadc1bc6',
 
   // TWITTER
   TWITTER_CONSUMER_KEY: process.env.TWITTER_CONSUMER_KEY,
