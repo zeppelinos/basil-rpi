@@ -1,7 +1,7 @@
 const hue = require("node-hue-api");
 const HueApi = hue.HueApi;
 const lightState = hue.lightState;
-const { HUE_HOST, HUE_LED_ID, HUE_USERNAME } = require('constants');
+const { HUE_HOST, HUE_LED_ID, HUE_USERNAME } = require('./constants');
 
 class Hue {
   constructor() {
