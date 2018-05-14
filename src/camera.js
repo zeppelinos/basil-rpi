@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { CAMERA_ID, CAMERA_IP } = require('constants');
+const { CAMERA_ID, CAMERA_IP } = require('./constants');
 
 class Camera {
   constructor() {
