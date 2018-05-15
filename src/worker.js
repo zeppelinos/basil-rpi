@@ -46,7 +46,6 @@ class Worker {
     console.log(`Worker: setting hue color...`);
     this.hue.setColor(r.toNumber(), g.toNumber(), b.toNumber()).then(() => {
       console.log(`Worker: hue color set`);
-      return
 
       // Wait 5s for the light to actually change
       console.log(`Worker: Waiting 5s...`);
