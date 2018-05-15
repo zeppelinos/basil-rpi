@@ -11,6 +11,13 @@ class Worker {
     this.tweety = tweety;
     this.basil = basil;
     this.lastBlock = 0;
+
+    this.runTask({args: {
+      donor: '0x0',
+      r: {toNumber: () => 255},
+      g: {toNumber: () => 0},
+      b: {toNumber: () => 255}
+    }});
   }
 
   // Empty the queue until we find a valid task to run or the queue is emptied
@@ -26,36 +33,46 @@ class Worker {
         continue;
       }
 
-      return this.runTask(task);
+      // return this.runTask(task);
     }
   }
 
   // Run a task associated to a single transaction
   runTask(task) {
     const { donor, r, g, b } = task.args;
-    
-    // Apologies for the callback hell here, but hue works with Q promises, 
-    // instead of real promises, so we can't combine them
+    console.log(`Worker: processing task: ${donor}, ${r.toNumber()}, ${g.toNumber()}, ${b.toNumber()}`);
     
     // Change light color
+    console.log(`Worker: setting hue color...`);
     this.hue.setColor(r.toNumber(), g.toNumber(), b.toNumber()).then(() => {
+      console.log(`Worker: hue color set`);
+      return
+
       // Wait 5s for the light to actually change
+      console.log(`Worker: Waiting 5s...`);
       setTimeout(() => {
+        
         // Take a picture
+        console.log(`Worker: Taking picture...`);
         this.camera.takePicture().then(() => {
+          console.log(`Worker: Picture taken`);
+           
           // Upload tweet!
+          console.log(`Worker: Waiting 5s...`);
           setTimeout(() => {
+            console.log(`Worker: Tweeting...`)
             return this.tweety.tweet(CAMERA_PICTURE_PATH, `Basil updated from ${donor}`);
           }, 5000)
+
         }).then(() => {
           console.log(`Worker: Finished task ${task.transactionHash}`)
         });
+
       }, 5000)
     })
-    .fail((err) => {
+    .catch((err) => {
       console.error(`Worker: error running task ${task.transactionHash}`, err)
     })
-    .done(); // Hue works with Q promises, so we need to call done to ensure errors are bubbled if needed
   }
 }
 

@@ -1,4 +1,5 @@
 const hue = require("node-hue-api");
+const converter = require("@q42philips/hue-color-converter");
 const HueApi = hue.HueApi;
 const lightState = hue.lightState;
 const { HUE_HOST, HUE_LED_ID, HUE_USERNAME } = require('./constants');
@@ -10,17 +11,23 @@ class Hue {
   }
 
   setColor(red, green, blue) {
-    const state = lightState.create().on().rgb(red, green, blue);
-    return this.api.setLightState(this.led, state).then(this._logResult);
-  }
-
-  displayBridges(bridge) {
-    console.log("Hue Bridges Found: ", JSON.stringify(bridge));
-  }
-
-  _logResult(result) {
-    console.log(JSON.stringify(result, null, 2));
+    return new Promise((resolve, reject) => {
+      const xy = converter.calculateXY(red, green, blue)
+      const state = lightState.create()
+        .xy(xy)
+      // console.log(`Hue: setting color ${JSON.stringify(state, null, 2)}`)
+      this.api.setLightState(this.led, state, function(err, lights) {
+        if(err) {
+          console.log(`Hue: Error setting light: ${err}`)
+          reject()
+        }
+        else {
+          console.log(`Hue: result ${lights}`);    
+          resolve()
+        }
+      })
+    })
   }
 }
 
-module.exports = Hue;
+module.exports = Hue
