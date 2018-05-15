@@ -73,7 +73,7 @@ class Worker {
           console.log(`Worker: Waiting 5s...`);
           setTimeout(() => {
             console.log(`Worker: Tweeting...`)
-            // return this.tweety.tweet(CAMERA_PICTURE_PATH, `Basil updated from ${donor}`);
+            return this.tweety.tweet(CAMERA_PICTURE_PATH, `Basil updated from ${donor}`);
           }, 5000)
 
         }).then(() => {
