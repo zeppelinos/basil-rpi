@@ -23,8 +23,6 @@ class Worker {
   // Empty the queue until we find a valid task to run or the queue is emptied
   work(event) {
     while (true) {
-      console.log(`Worker: block ${this.lastBlock}`)
-      console.log(`Worker: queue ${this.queue}`)
       const task = this.queue.shift();
       if (!task) {
         console.log("Worker: no tasks to run");
@@ -62,7 +60,7 @@ class Worker {
           console.log(`Worker: Waiting 5s...`);
           setTimeout(() => {
             console.log(`Worker: Tweeting...`)
-            // return this.tweety.tweet(CAMERA_PICTURE_PATH, `Basil updated from ${donor}`);
+            return this.tweety.tweet(CAMERA_PICTURE_PATH, `Basil updated from ${donor}`);
           }, 5000)
 
         }).then(() => {
