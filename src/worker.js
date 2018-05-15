@@ -13,13 +13,6 @@ class Worker {
     this.tweety = tweety;
     this.basil = basil;
     this.lastBlock = 0;
-
-    // this.runTask({args: {
-    //   donor: '0x0',
-    //   r: {toNumber: () => 255},
-    //   g: {toNumber: () => 0},
-    //   b: {toNumber: () => 255}
-    // }});
   }
 
   // Empty the queue until we find a valid task to run or the queue is emptied
