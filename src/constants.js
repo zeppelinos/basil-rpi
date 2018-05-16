@@ -11,7 +11,7 @@ module.exports = {
 
   // ETHEREUM
   PROVIDER_URL: 'http://localhost:8565',
-  BASIL_ADDRESS: '0x4103dee0e21ad2d2181a887034fe52fe446f7f25',
+  BASIL_ADDRESS: '0x74e69eb21fe53169db6fe6f765fea7fea23d03ec',
 
   // TWITTER
   TWITTER_CONSUMER_KEY: process.env.TWITTER_CONSUMER_KEY,
