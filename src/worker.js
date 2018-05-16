@@ -49,6 +49,7 @@ class Worker {
 
     if(this.existsInLog(task.transactionHash)) {
       console.log(`Worker: Task ${task.transactionHash} already executed, skipping`);  
+      this.work(null)
       return;
     }
 
