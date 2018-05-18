@@ -2,7 +2,7 @@ const hue = require("node-hue-api");
 const converter = require("@q42philips/hue-color-converter");
 const HueApi = hue.HueApi;
 const lightState = hue.lightState;
-const { HUE_LED_ID, HUE_USERNAME } = require('./constants');
+const { HUE_HOST, HUE_LED_ID, HUE_USERNAME } = require('./constants');
 
 class Hue {
   constructor() {
@@ -12,11 +12,13 @@ class Hue {
 
   checkBridge() {
     const self = this
-    hue.nupnpSearch().then(function(bridges) {
-      console.log("Hue Bridges Found: " + JSON.stringify(bridges));
-      self.api = new HueApi(bridges[0].ipaddress, HUE_USERNAME)
-      self.setInit()
-    }).done();
+    // hue.nupnpSearch().then(function(bridges) {
+    //   console.log("Hue Bridges Found: " + JSON.stringify(bridges));
+    //   self.api = new HueApi(bridges[0].ipaddress, HUE_USERNAME)
+    //   self.setInit()
+    // }).done();
+    self.api = new HueApi(HUE_HOST, HUE_USERNAME)
+    self.setInit()
   }
 
   setInit() {
