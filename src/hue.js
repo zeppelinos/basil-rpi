@@ -24,7 +24,7 @@ class Hue {
     console.log(`Hue: init`)
     const state = lightState.create()
       .brightness(5)
-      .xy(0, 1)
+      .xy(this.lastXY || [0, 1])
     this.setState(state)
   }
 
@@ -46,6 +46,7 @@ class Hue {
       .brightness(100)
       .xy(xy)
     this.setState(state)
+    this.lastXY = xy;
   }
 
   setState(state) {
