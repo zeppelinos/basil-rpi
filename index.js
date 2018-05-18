@@ -9,7 +9,7 @@ const Twitter = require('./src/twitter');
 const Connection = require('./src/connection');
 const Tasklog = require('./src/tasklog');
 
-const INTERVAL = 20000;
+const INTERVAL = 10000;
 
 const queue = [];
 const hue = new Hue();
@@ -42,9 +42,9 @@ const execute = async () => {
               // console.log(`Task ${result.transactionHash} already executed, skipping`);  
             }
           }
+          worker.work() 
         }
       });
-      worker.work() 
     })
     .catch((err) => {
       console.log(`${err}`); 
