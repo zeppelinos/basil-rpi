@@ -23,8 +23,8 @@ class Hue {
     if(!this.api) return;
     console.log(`Hue: init`)
     const state = lightState.create()
-      .brightness(10)
-      .xy(1, 1)
+      .brightness(5)
+      .xy(0, 1)
     this.setState(state)
   }
 
