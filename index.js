@@ -9,7 +9,7 @@ const Twitter = require('./src/twitter');
 const Connection = require('./src/connection');
 const Tasklog = require('./src/tasklog');
 
-const INTERVAL = 15000;
+const INTERVAL = 60000;
 
 const queue = [];
 const hue = new Hue();
