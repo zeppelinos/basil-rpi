@@ -10,7 +10,7 @@ module.exports = {
   HUE_USERNAME: process.env.HUE_USERNAME,
 
   // ETHEREUM
-  PROVIDER_URL: 'http://localhost:8565',
+  PROVIDER_URL: 'http://localhost:8546',
   BASIL_ADDRESS: '0x96dc0af2a77e4b185e5fe6cbfdb21f281e17c733',
 
   // TWITTER
